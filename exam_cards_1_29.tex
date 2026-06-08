@@ -1,19 +1,26 @@
 \documentclass[10pt,a4paper]{article}
 
+\usepackage{iftex}
+
+\ifPDFTeX
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\else
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setmainfont{Arial}
-
+\fi
 \usepackage{amsmath,amssymb}
 \usepackage[margin=1.35cm]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 
-\newcommand{\X}{\mathcal X}
+\newcommand{\X}{X}
 \newcommand{\A}{\mathcal A}
 \newcommand{\B}{\mathcal B}
-\newcommand{\C}{\mathbb C}
+\newcommand{\CC}{\mathbb C}
 \newcommand{\R}{\mathbb R}
 \newcommand{\Lin}{\operatorname{Lin}}
 \newcommand{\Ker}{\operatorname{Ker}}
@@ -26,30 +33,33 @@
 \setlist[itemize]{leftmargin=1.25em,itemsep=0.1em,topsep=0.1em,parsep=0pt,partopsep=0pt}
 
 \begin{document}
-\small
+% \small
 \sloppy
 
-\begin{center}
-    {\large\bfseries Функциональный анализ: пункты 1--29}
-\end{center}
-
 \section*{1. Слабая-* топология. Слабо-* непрерывные функционалы}
-\textbf{Формулировка.} Для $x\in\X$ рассмотрим $\Phi_x\in(\X^\ast)^\ast$, $\Phi_x(f)=f(x)$. Слабая-* топология на $\X^\ast$ --- слабая топология, порождённая семейством $\Phi(\X)$; то есть это слабейшая топология, в которой все $f\mapsto f(x)$ непрерывны. Сходимость $f_n\overset{\wstar}{\to} f$ равносильна поточечной: $f_n(x)\to f(x)$ для всех $x\in\X$. По лемме о сопряжённом пространстве все слабo-* непрерывные линейные функционалы на $\X^\ast$ имеют вид $F(f)=\sum_{k=1}^n\alpha_k f(x_k)=f(x)$, где $x=\sum\alpha_kx_k$.
 
-\textbf{Доказательство, идея.}
-\begin{enumerate}
-    \item Конечные комбинации $\Phi_x$ непрерывны по определению топологии.
-    \item Если $F$ непрерывен в нуле, то некоторая базовая окрестность по $x_1,\dots,x_n$ лежит в $\{|F|<1\}$.
-    \item Отсюда $\bigcap_k\Ker \Phi_{x_k}\subset\Ker F$: если $g$ зануляет все $x_k$, то $tg$ лежит в этой окрестности при всех $t>0$, значит $F(g)=0$.
-    \item По лемме о ядрах $F\in\Lin\{\Phi_{x_1},\dots,\Phi_{x_n}\}$.
-\end{enumerate}
+\textbf{Формулировки.}
+Каноническое вложение $\Phi:X\to X^{**}$, $\Phi_x(f)=f(x)$, линейно, изометрично и инъективно.
+Слабая-* топология на $X^*$, обозначаемая $\tau_{w*}$, есть слабая топология, порождённая системой функционалов $\Phi(X)$, то есть слабейшая, относительно которой непрерывны $f\mapsto f(x)$, $x\in X$.
+Критерий слабой-* сходимости:
+$f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
+Лемма о сопряжённом пространстве ($(X, \tau_{\Phi})^* = Lin\{\Phi\}$) даёт общий вид слабо-* непрерывного линейного функционала: $F(f)=\sum_{k=1}^n a_k f(x_k)$.
+
+\textbf{Док-во.}
+Линейные комбинации отображений $f\mapsto f(x)$ непрерывны по определению слабой-* топологии.
+Пусть $\varphi$ непрерывен. Тогда существует базисная окрестность нуля $\bigcap_{k=1}^nV(0,\phi_k,\varepsilon)$, на которой $|\varphi|<1$.
+Так как $\bigcap_{k=1}^n\ker\phi_k\subset\bigcap_{k=1}^nV(0,\phi_k,\varepsilon)$, то для $x$ из пересечения ядер и любого $r>0$ имеем $|\varphi(rx)|<1$, откуда $\varphi(x)=0$.
+Следовательно, $\ker\varphi\supset\bigcap_{k=1}^n\ker\phi_k$.
+По лемме о ядрах $\varphi\in\operatorname{Lin}\{\phi_1,\ldots,\phi_n\}$.
+
+
 
 \section*{2. Банах--Алаоглу}
 \textbf{Формулировка.} Пусть $(\X,\tau)$ --- топологическое векторное пространство, $0\in V\in\tau$. Поляра окрестности $V$ есть $\Gamma(V)=\{f\in(\X,\tau)^\ast:\ |f(x)|\le1\ \forall x\in V\}$, где $(\X,\tau)^\ast$ --- топологическое сопряжённое. Тогда $\Gamma(V)$ компактна в слабой-* топологии на $(\X,\tau)^\ast$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Смотрим на $(\X,\tau)^\ast\subset\C^\X$ с топологией Тихонова; её сужение --- слабая-* топология, поэтому достаточно получить компактность в топологии Тихонова и затем перейти к подпространству.
+    \item Смотрим на $(\X,\tau)^\ast\subset\CC^\X$ с топологией Тихонова; её сужение --- слабая-* топология, поэтому достаточно получить компактность в топологии Тихонова и затем перейти к подпространству.
     \item Для каждого $x$ из непрерывности умножения на скаляр в ТВП выбираем $\delta_x>0$ так, что $\delta_xx\in V$. Тогда для $f\in\Gamma(V)$ имеем $|f(x)|\le1/\delta_x$, значит $\Gamma(V)$ лежит в тихоновском компакте $\prod_x\{|\lambda|\le1/\delta_x\}$.
     \item Теперь осталось показать замкнутость поляры: пусть $h\in[\Gamma(V)]_{\tau_T}$. Надо показать, что $h$ линеен, непрерывен и $|h|\le1$ на $V$.
     \item Линейность: для $x,y,\alpha,\beta$ и $\varepsilon>0$ берём $f\in\Gamma(V)$ близкий к $h$ в координатах $x,y,\alpha x+\beta y$. Тогда $|h(\alpha x+\beta y)-\alpha h(x)-\beta h(y)|\le\varepsilon(1+|\alpha|+|\beta|)$, значит равенство точное.
@@ -413,7 +423,7 @@
 
     \item Тогда $A|_M$ --- компактный самосопряжённый оператор в $M$. Если $A|_M\ne0$, то по результату о спектре самосопряжённого оператора у него есть ненулевое спектральное значение, а по компактности оно является собственным.
 
-    \item Значит существует $0\ne x\in M$ и $\lambda\ne0$ такие, что $Ax=\lambda x$. Тогда $x\in\ker(A-\lambda I)=L_n$ для некоторого $n$, что противоречит $x\in M\perp L$. Следовательно, $A|_M=0$. 
+    \item Значит существует $0\ne x\in M$ и $\lambda\ne0$ такие, что $Ax=\lambda x$. Тогда $x\in\ker(A-\lambda I)=L_n$ для некоторого $n$, что противоречит $x\in M\perp L$. Следовательно, $A|_M=0$.
     \item Тогда $M\subset\ker A$, но также $M\subset(\ker A)^\perp$, значит $M=\{0\}$. Но $L \bigoplus M = (\Ker A)^\perp$.
     Поэтому $(\ker A)^\perp={\bigoplus_n L_n}$. Умом.
 \end{enumerate}
