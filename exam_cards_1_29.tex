@@ -196,7 +196,10 @@
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Первое равенство: включение $\overline L\subset{}^\perp(L^\perp)$ очевидно; если $x\notin\overline L$, отделяем $x$ от $\overline L$ функционалом, который зануляет $L$.
+    \item Если $x\in\overline L^{\|\cdot\|}$ или $x\in\overline L^w$, то для любого $f\in L^\perp$ имеем $f|_L=0$, а значит по непрерывности $f(x)=0$. Поэтому $\overline L^{\|\cdot\|}\subset{}^\perp(L^\perp)$ и $\overline L^w\subset{}^\perp(L^\perp)$.
+    \item Обратно, если $x\notin\overline L^{\|\cdot\|}$, то смотрим на фактор $\X/\overline L^{\|\cdot\|}$: это пространство классов $u+\overline L^{\|\cdot\|}$, и класс $x+\overline L^{\|\cdot\|}$ там ненулевой. По Хану--Банаху на этом факторе есть функционал $\psi$, который равен $0$ на нуле, но $\psi(x+\overline L^{\|\cdot\|})\ne0$.
+    \item Поднимаем его на $\X$: $f(u)=\psi(u+\overline L^{\|\cdot\|})$. Тогда $f\in\X^\ast$, $f|_{\overline L^{\|\cdot\|}}=0$, но $f(x)\ne0$. Значит $f\in L^\perp$, и потому $x\notin{}^\perp(L^\perp)$. Следовательно, ${}^\perp(L^\perp)\subset\overline L^{\|\cdot\|}$.
+    \item Теперь $\overline L^{\|\cdot\|}$ выпукло и нормозамкнуто, значит по Мазуру его слабое замыкание совпадает с ним; отсюда $\overline L^w=\overline L^{\|\cdot\|}$ и вместе с первым шагом получаем нужное равенство.
     \item Второе: работаем в слабой-* локально выпуклой топологии на $\X^\ast$; если $f\notin\overline N^{w^\ast}$, отделяем его слабo-* непрерывным функционалом, а такие имеют вид $J_x$.
     \item Тогда $J_x$ зануляет $N$, то есть $x\in{}^\perp N$, но не зануляет $f$ --- противоречие принадлежности $f\in({}^\perp N)^\perp$.
     \item Голдстайн: $\overline{J_\X\X}^{w^\ast}=({}^\perp J_\X\X)^\perp$, а ${}^\perp J_\X\X=\{0\}\subset\X^\ast$, значит замыкание равно $\X^{\ast\ast}$.
@@ -218,9 +221,12 @@
 \textbf{Доказательство, идея.}
 \begin{enumerate}
     \item Первые равенства --- прямое раскрытие: $(A^\ast g)(x)=g(Ax)$.
-    \item Замыкания получаются применением формул для двойных аннуляторов.
-    \item При замкнутом образе для $f\in(\Ker A)^\perp$ задаём $\varphi(Ax)=f(x)$ на $\operatorname{Im}A$.
-    \item Корректность идёт из зануления $\Ker A$; непрерывность --- из теоремы об открытом отображении для $A:\X\to\operatorname{Im}A$.
+    \item Замыкания получаются применением формул для двойных аннуляторов из п.~16 программы.
+    \item При замкнутом образе включение $\operatorname{Im}A^\ast\subset(\Ker A)^\perp$ очевидно: если $f=A^\ast g$, то на $\Ker A$ имеем $f(x)=g(Ax)=0$. Доказываем обратное.
+    \item Для $f\in(\Ker A)^\perp$ задаём $\varphi(Ax)=f(x)$ на $\operatorname{Im}A$.
+    \item Корректность как в конспекте: если $Ax_1=Ax_2$, то $x_1-x_2\in\Ker A$, значит $f(x_1-x_2)=0$ и $\varphi(Ax_1)=\varphi(Ax_2)$.
+    \item Так как $\operatorname{Im}A$ замкнут, это банахово пространство. По теореме Банаха $A:\X\to\operatorname{Im}A$ открыто, значит $\exists r>0:\ B_r(0)\cap\operatorname{Im}A\subset A(B_1(0))$.
+    \item Для любого $y\in\operatorname{Im}A$, $y\ne0$, берём $x\in B_1(0)$ с $Ax=\frac r2\,y/\|y\|$. Тогда $|\varphi(y)|=\frac{2\|y\|}{r}|f(x)|\le\frac{2}{r}\|f\|\|y\|$; это глобальная оценка $|\varphi(y)|\le C\|y\|$, значит $\varphi$ непрерывен.
     \item Продлеваем $\varphi$ на $Y$ по Хану--Банаху: $g|_{\operatorname{Im}A}=\varphi$, тогда $f=A^\ast g$.
 \end{enumerate}
 
