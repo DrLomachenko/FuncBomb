@@ -335,55 +335,82 @@
 
     \item Докажем, что $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно. Пусть нет: есть собственные числа $\{ \lambda_n \}$, $|\lambda_n|>r$.
 
-    \item Берём собственные векторы $x_n\ne0$, $Ax_n=\lambda_n x_n$, и кладём $L_n=\Lin\{x_1,\ldots,x_n\}$. Собственные векторы, отвечающие различным собственным числам, линейно независимы, значит $L_1\subsetneq L_2\subsetneq\ldots$.
+    \item Берём собственные векторы $x_n\ne0$, $Ax_n=\lambda_n x_n$, $L_n=\Lin\{x_1,\ldots,x_n\}$. Собственные векторы, отвечающие различным собственным числам, линейно независимы, значит $L_1\subsetneq L_2\subsetneq\ldots$.
 
-    \item По лемме Рисса выбираем $y_n\in L_n$, $\|y_n\|=1$, так что $\rho(y_n,L_{n-1})>\frac12$.
+    \item По лемме Рисса о почти перпендикуляре выбираем $y_n\in L_n$, $\|y_n\|=1$, так что $\rho(y_n,L_{n-1})>\frac12$.
 
-    \item При $m<n$ имеем $Ay_m\in L_m\subset L_{n-1}$ и $Ay_n-\lambda_n y_n\in L_{n-1}$, поэтому $\|Ay_n-Ay_m\|\ge |\lambda_n|\rho(y_n,L_{n-1})>\frac r2$.
+    \item A - компактный. При $m<n$ имеем $Ay_m\in L_m\subset L_{n-1}$ и $Ay_n-\lambda_n y_n\in L_{n-1}$, поэтому $\|Ay_n-Ay_m\|\ge |\lambda_n|\rho(y_n,L_{n-1})>\frac r2$.
 
-    \item Значит у последовательности $Ay_n$ нет фундаментальной подпоследовательности, что противоречит компактности $A$, так как $\|y_n\|=1$.
+    \item Значит у последовательности $Ay_n$ нет фундаментальной подпоследовательности, что противоречит компактности $A$.
 
-    \item Следовательно, $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно. Тогда $\sigma(A)\setminus\{0\}=\bigcup_{n=1}^{\infty}\{\lambda\in\sigma(A):|\lambda|>\frac1n\}$ не более чем счётно, и все возможные точки накопления могут быть только в $0$.
+    \item Следовательно, $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно. Тогда $\sigma(A)\setminus\{0\}=\bigcup_{n=1}^{\infty}\{\lambda\in\sigma(A):|\lambda|>\frac1n\}$ не более чем счётно, и если множество $\{ \lambda_k\}$ счётно, то $\lambda_k \rightarrow 0, k \rightarrow \infty$.
 
-    \item Наконец, $0\in\sigma(A)$: иначе $A^{-1}\in\mathcal L(X)$, и тогда $I=A^{-1}A$ компактен. Но компактность $I$ означает компактность единичного шара, что в бесконечномерном нормированном пространстве невозможно. Противоречие.
+    \item Если $\dim X = \infty$, то $0\in\sigma(A)$, так как иначе $A^{-1}\in\mathcal L(X)$, и тогда $I=A^{-1}A$ компактен. Но компактность $I$ означает компактность единичного шара, что в бесконечномерном нормированном пространстве невозможно. Противоречие.
 \end{enumerate}
 
 \section*{25. Самосопряжённый оператор: вещественность спектра и отсутствие остаточного}
-\textbf{Формулировка.} Если $A=A^\ast$ в гильбертовом $\mathcal H$, то $\sigma(A)\subset\R$, а остаточный спектр пуст.
+\textbf{Формулировка.} Пусть $H$ --- гильбертово, $A\in\mathcal L(H)$, $A=A^*$. Тогда $\sigma(A)\subset\mathbb R$. Остаточный спектр $A$ пуст.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Для $\lambda=\mu+i\nu$, $\nu\ne0$, имеем $\|(A-\lambda I)x\|^2=\|(A-\mu I)x\|^2+\nu^2\|x\|^2$, потому что $A-\mu I$ самосопряжён.
-    \item Отсюда оценка снизу $\|(A-\lambda I)x\|\ge|\nu|\|x\|$: ядро нулевое, образ замкнут, обратный на образе ограничен.
-    \item У сопряжённого $(A-\lambda I)^\ast=A-\bar\lambda I$ тоже нулевое ядро; значит ортогональное дополнение образа нулевое, образ плотен.
-    \item Образ одновременно замкнут и плотен, значит весь $\mathcal H$; $\lambda$ в резольвенте.
-    \item Для вещественного $\lambda$: если $\Ker(A-\lambda I)=0$, то $(\operatorname{Im}(A-\lambda I))^\perp=\Ker(A-\lambda I)=0$, значит образ плотен. Поэтому остаточного спектра нет.
-\end{enumerate}
+    \item Пусть $\lambda=\mu+i\nu$ и $\lambda \notin \mathbb{R}$, т.е. $\nu \not = 0$ и $A_\mu=A-\mu I$. Тогда $A_\lambda=A_\mu-i\nu I$, причём $A_\mu^*=A_\mu$.
 
-\section*{26. Критерий спектра самосопряжённого и локализация}
-\textbf{Формулировка.} Для $A=A^\ast$ и $\lambda\in\R$: $\lambda\in\sigma(A)$ iff существуют $\|x_n\|=1$ такие, что $\|(A-\lambda I)x_n\|\to0$. Если $m_-=\inf_{\|x\|=1}\langle Ax,x\rangle$, $m_+=\sup_{\|x\|=1}\langle Ax,x\rangle$, то $\sigma(A)\subset[m_-,m_+]$ и $m_\pm\in\sigma(A)$.
+    \item Для любого $x\in H$ имеем $\|A_\lambda x\|^2=\langle A_\mu x-i\nu x,A_\mu x-i\nu x\rangle=\|A_\mu x\|^2+\nu^2\|x\|^2+i\nu\langle x,A_\mu x\rangle-i\nu\langle A_\mu x,x\rangle$. Так как $A_\mu^*=A_\mu$, то $\langle x,A_\mu x\rangle=\langle A_\mu x,x\rangle$, значит $\|A_\lambda x\|^2=\|A_\mu x\|^2+\nu^2\|x\|^2\ge\nu^2\|x\|^2$.
+
+    \item Поэтому $\|A_\lambda x\|\ge |\nu|\|x\|$ для всех $x\in H$. Отсюда $\ker A_\lambda=0$, $\text{Im}\,A_\lambda$ замкнут, а обратный оператор $A_\lambda^{-1}:\text{Im}\,A_\lambda\to H$ ограничен. $(A_\lambda)^*=A_{\overline{\lambda}}$, то для $A_{\overline{\lambda}}$ аналогично получаем $\ker(A_\lambda)^*=\ker A_{\overline{\lambda}}=0$.
+
+    \item По аннуляторному соотношению $(\text{Im}\,A_\lambda)^\perp=\ker(A_\lambda)^*=0$, значит $\overline{\text{Im}\,A_\lambda}=H$.
+
+    \item Но $\text{Im}\,A_\lambda$ уже замкнут, поэтому $\text{Im}\,A_\lambda=H$. Значит $A_\lambda$ биективен и $A_\lambda^{-1}\in\mathcal L(H)$, то есть $\lambda\in\rho(A)$.
+
+    \item Следовательно, $\forall\lambda\notin\mathbb R$ имеем $\lambda\in\rho(A)$, значит $\sigma(A)\subset\mathbb R$.
+
+    \item Теперь пусть $\lambda\in\mathbb R$. Тогда $A_\lambda=A-\lambda I$ самосопряжён, поэтому $(\text{Im}\,A_\lambda)^\perp=\ker(A_\lambda)^*=\ker A_\lambda$.
+
+    \item Если $\lambda$ лежит в остаточном спектре, то $\ker A_\lambda=0$, а $\overline{\text{Im}\,A_\lambda}\ne H$. Но из $\ker A_\lambda=0$ получаем $(\text{Im}\,A_\lambda)^\perp=0$, значит $\overline{\text{Im}\,A_\lambda}=H$. Противоречие. Победа.
+\end{enumerate}
+\section*{26. Критерий попадания вещественного числа в спектр самосопряжённого оператора. Локализация спектра}
+
+\textbf{Формулировка.} Пусть $H$ --- гильбертово, $A\in\mathcal L(H)$, $A=A^*$, $A_\lambda=A-\lambda I$. Тогда $\forall\lambda\in\mathbb R\quad \lambda\in\sigma(A)\Longleftrightarrow \exists x_n\in H:\ \|x_n\|=1,\ \|A_\lambda x_n\|\to0$. Локализация: если $m_-=\inf_{\|x\|=1}\langle Ax,x\rangle$, $m_+=\sup_{\|x\|=1}\langle Ax,x\rangle$, то $\sigma(A)\subset[m_-,m_+]$ и $m_-,m_+\in\sigma(A)$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Для самосопряжённого $A-\lambda I$ вещественная $\lambda$ лежит в резольвенте iff есть оценка снизу $\|(A-\lambda I)x\|\ge c\|x\|$.
-    \item Отрицание этой оценки после нормировки даёт последовательность почти собственных векторов.
-    \item Если $\lambda>m_+$, то $\langle(\lambda I-A)x,x\rangle\ge(\lambda-m_+)\|x\|^2$, значит по КБШ $\|(A-\lambda I)x\|\ge(\lambda-m_+)\|x\|$; аналогично слева от $m_-$.
-    \item Для $m_+$ берём максимизирующую последовательность $x_n$. Псевдоскалярное произведение $\langle u,v\rangle_+=\langle(m_+I-A)u,v\rangle$ и КБШ для него дают $\|(A-m_+I)x_n\|\to0$.
-    \item То же для $m_-$.
-\end{enumerate}
+    \item Пусть $\lambda\in\mathbb R$. $\lambda\in\rho(A)$ $\Longleftrightarrow$ норма $A_\lambda$ оценивается снизу: $\exists k_\lambda>0:\ \|A_\lambda x\|\ge k_\lambda\|x\|$ для всех $x\in H$. (несложно доказать)
 
+    \item Отсюда $\lambda\in\sigma(A)$ $\Longleftrightarrow$ $\forall C>0 \exists y_C\in H$: $\|A_\lambda y_C\|<C||y_C||$. Для $C=\frac1n$: $||A y_n|| < \frac 1 n ||y_n||$. $x_n = \frac{y_n}{||y_n||}$ и получаем требуемое.
+
+    \item Если $\lambda>m_+$, то $\langle(\lambda I-A)x,x\rangle\ge(\lambda-m_+)\|x\|^2$. По КБШ $(\lambda-m_+)\|x\|^2\le|\langle(\lambda I-A)x,x\rangle|\le\|(\lambda I-A)x\|\|x\|$, $\|A_\lambda x\|\ge(\lambda-m_+)\|x\|$, откуда $\lambda\in\rho(A)$.
+
+    \item Если $\lambda<m_-$, то $\langle(A-\lambda I)x,x\rangle\ge(m_- - \lambda)\|x\|^2$, откуда $\|A_\lambda x\|\ge(m_- - \lambda)\|x\|$, значит $\lambda\in\rho(A)$. Поэтому $\sigma(A)\subset[m_-,m_+]$.
+
+    \item Докажем, что $m_+\in\sigma(A)$. Берём $x_n\in H$, $\|x_n\|=1$, такие что $\langle Ax_n,x_n\rangle\to m_+$. Положим $B=m_+I-A$. Тогда $B\ge0$ и $[u,v]=\langle Bu,v\rangle$ --- псевдоскалярное произведение.
+
+    \item По КБШ для $[\cdot,\cdot]$ имеем $\|Bx_n\|^2=\langle Bx_n,Bx_n\rangle=[x_n,Bx_n]\le [x_n,x_n]^{1/2}[Bx_n,Bx_n]^{1/2}\le (m_+-\langle Ax_n,x_n\rangle)^{1/2}\|B\|^{1/2}\|Bx_n\|$.
+
+    \item Значит $\|Bx_n\|\to0$, то есть $\|(A-m_+I)x_n\|\to0$. По критерию $m_+\in\sigma(A)$. Аналогично для $m_-$. Победа.
+\end{enumerate}
 \section*{27. Теорема Гильберта--Шмидта}
-\textbf{Формулировка.} Если $\mathcal H$ бесконечномерно, $A=A^\ast$ компактен, то в $(\Ker A)^\perp$ есть ортонормированный базис из собственных векторов, и $\mathcal H=\Ker A\oplus\bigoplus_n L_n$, где $L_n=\Ker(A-\lambda_n I)$ конечномерны.
+
+\textbf{Формулировка.} Пусть $H$ --- бесконечномерное гильбертово пространство, $A\in\mathcal L(H)$ компактен и $A=A^*$. Тогда в $(\ker A)^\perp$ существует ортонормированный базис из собственных векторов оператора $A$. Более того, $H=\ker A\oplus{\bigoplus_n L_n}$, где $L_n=\ker(A-\lambda_n I)$, а $\lambda_n$ --- все ненулевые собственные числа $A$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Спектр компактного самосопряжённого: ненулевые точки --- вещественные собственные числа конечной кратности, возможное накопление только $0$.
-    \item В каждом $L_n$ выбираем ОНБ; разные $L_n$ ортогональны: $\lambda_n\langle x,y\rangle=\langle Ax,y\rangle=\langle x,Ay\rangle=\lambda_m\langle x,y\rangle$.
-    \item Пусть $L=\overline{\bigoplus_n L_n}$. Тогда $L\subset(\Ker A)^\perp$.
-    \item Рассматриваем $M=(\Ker A)^\perp\ominus L$. Оно инвариантно относительно $A$: самосопряжённость переносит ортогональность.
-    \item Если $A|_M\ne0$, у него есть ненулевое спектральное значение, значит собственный вектор вне $L$; противоречие. Значит $A|_M=0$, но $M\subset(\Ker A)^\perp$, значит $M=0$.
-\end{enumerate}
+    \item По теореме о спектре компактного оператора все ненулевые точки спектра $A$ являются собственными числами, а из самосопряжённости они вещественны. Обозначим их через $\lambda_n$ и положим $L_n=\ker(A-\lambda_n I)$.
 
+    \item По билету 20 каждое $L_n$ конечномерно. В каждом $L_n$ выбираем ортонормированный базис.
+
+    \item Если $x\in L_n$, $y\in L_m$, $\lambda_n\ne\lambda_m$, то $\lambda_n\langle x,y\rangle=\langle Ax,y\rangle=\langle x,Ay\rangle=\lambda_m\langle x,y\rangle$, значит $\langle x,y\rangle=0$. Поэтому разные собственные подпространства ортогональны.
+
+    \item Пусть $L={\bigoplus_n L_n}$. Тогда $L\subset(\ker A)^\perp$, поскольку если $x\in L_n$, $y\in\ker A$, то $\lambda_n\langle x,y\rangle=\langle Ax,y\rangle=\langle x,Ay\rangle=0$, а $\lambda_n\ne0$.
+
+    \item Рассмотрим $M$ - ортогональное дополнение $L$ в $\Ker A^\perp$. Покажем, что $M$ инвариантно относительно $A$. Если $x\in M$, то для $y\in\ker A$ имеем $\langle Ax,y\rangle=\langle x,Ay\rangle=0$, а для $y\in L_n$ имеем $\langle Ax,y\rangle=\langle x,Ay\rangle=\lambda_n\langle x,y\rangle=0$. Значит $Ax\in M$.
+
+    \item Тогда $A|_M$ --- компактный самосопряжённый оператор в $M$. Если $A|_M\ne0$, то по результату о спектре самосопряжённого оператора у него есть ненулевое спектральное значение, а по компактности оно является собственным.
+
+    \item Значит существует $0\ne x\in M$ и $\lambda\ne0$ такие, что $Ax=\lambda x$. Тогда $x\in\ker(A-\lambda I)=L_n$ для некоторого $n$, что противоречит $x\in M\perp L$. Следовательно, $A|_M=0$. 
+    \item Тогда $M\subset\ker A$, но также $M\subset(\ker A)^\perp$, значит $M=\{0\}$. Но $L \bigoplus M = (\Ker A)^\perp$.
+    Поэтому $(\ker A)^\perp={\bigoplus_n L_n}$. Умом.
+\end{enumerate}
 \section*{28. Резольвентное множество и компактность спектра}
 \textbf{Формулировка.} Для $A\in\mathcal L(\X)$ в нетривиальном банаховом $\X$ резольвентное множество открыто, спектр замкнут, ограничен, непуст и потому компактен.
 
