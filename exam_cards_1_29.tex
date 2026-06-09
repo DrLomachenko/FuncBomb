@@ -257,20 +257,14 @@ $f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-
-    \item Хотим показать, что в $\Ker A_\lambda$ единичный шар вполне ограничен: если $\{ x_n \} \subset \Ker A_\lambda$, то $x_n=Ax_n/\lambda \in \frac 1 \lambda AB_R(0)$. $A$ компактно, значит $AB_R(0)$ вполне ограничено и в $\{ x_n \}$ есть фундаментальная подпоследовательность.
-    \item Образ единичного шара вполне ограничен, значит $\dim \Ker A < \infty$.
-    \item Берём замкнутое дополнение: $X=\Ker A_\lambda \oplus N$. $N = \bigcap f_k$, где $f_k - $ координатные функционалы $\Ker A_\lambda \rightarrow \mathbb{C}$, продолженные по теореме Хана-Банаха на  $X$.
-
-    \item Доказываем оценку снизу на $N$: $\exists c>0:\ \|A_\lambda x\|\ge c\|x\|$ для всех $x\in N$. Иначе $\exists x_n\in N$, $\|x_n\|=1$, такие что $A_\lambda x_n\to0$.
-
-    \item По компактности $A$ выделяем $Ax_{n_k}\to y$. Тогда $x_{n_k}=\lambda^{-1}(Ax_{n_k}-A_\lambda x_{n_k})$ сходится к некоторому $x\in N$.
-
-    \item Но $A_\lambda x=0$, значит $x\in\Ker A_\lambda$. Поэтому $x\in N\cap\Ker A_\lambda=\{0\}$, хотя $\|x\|=1$. Противоречие, оценка доказана.
-
-    \item Пусть $y_n=A_\lambda z_n\to y$. Пишем $z_n=u_n+v_n$, где $u_n\in\Ker A_\lambda$, $v_n\in N$. Тогда $y_n=A_\lambda v_n$.
-
-    \item По оценке снизу $v_n$ фундаментальна, значит $v_n\to v\in N$. Следовательно, $y=\lim A_\lambda v_n=A_\lambda v$, то есть $y\in \text{Im} A_\lambda$. Значит $\text{Im} A_\lambda$ замкнут.
+    \item На $\Ker A_\lambda$ имеем $A=\lambda I$. Поэтому $A$ переводит единичную сферу $\Ker A_\lambda$ в $\lambda$-сферу. Если бы $\Ker A_\lambda$ было бесконечномерно, эта сфера не была бы вполне ограничена, а значит не могла бы лежать в вполне ограниченном множестве $A(\mathcal B_1(0))$. Противоречие.
+    \item Значит $\dim\Ker A_\lambda<\infty$. Берём базис $e_1,\dots,e_n$ в $\Ker A_\lambda$, координатные функционалы на $\Ker A_\lambda$ и продолжаем их по Хану--Банаху на всё $\X$.
+    \item Положим $N=\bigcap_{k=1}^n\Ker f_k$. Тогда $\X=\Ker A_\lambda\oplus N$, причём $N$ замкнуто.
+    \item Доказываем оценку снизу на $N$: существует $c>0$ такое, что $\|x\|\le c\|A_\lambda x\|$ для всех $x\in N$.
+    \item Иначе найдётся $x_n\in N$, $\|x_n\|=1$, $A_\lambda x_n\to0$. По компактности $A$ выделяем $Ax_{n_k}\to y$. Тогда $x_{n_k}=\lambda^{-1}(Ax_{n_k}-A_\lambda x_{n_k})\to \lambda^{-1}y=:x$.
+    \item Так как $N$ замкнуто, то $x\in N$; и $A_\lambda x=0$, значит $x\in\Ker A_\lambda\cap N=\{0\}$, противоречие $\|x\|=1$.
+    \item Наконец, если $A_\lambda z_n\to y$, пишем $z_n=u_n+v_n$, $u_n\in\Ker A_\lambda$, $v_n\in N$. Тогда $A_\lambda z_n=A_\lambda v_n$, а по оценке снизу $v_n$ фундаментальна, значит $v_n\to v\in N$ и $y=A_\lambda v$.
+    \item Следовательно, $\operatorname{Im}A_\lambda$ замкнут.
 
 \end{enumerate}
 
@@ -283,19 +277,19 @@ $f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
 
     \item Берём последовательность $g_n\in \mathcal B_1^{\mathcal Y^*}[0]$ и рассматриваем ограничения $g_n|_K\in C(K)$.
 
-    \item Семейство $\{g_n|_K\}$ равномерно ограничено и равностепенно непрерывно: $|g_n(y)-g_n(z)|\le \|y-z\|$ для всех $y,z\in K$.
+    \item Для $\{g_n|_K\}$ равномерная ограниченность и равностепенная непрерывность почти очевидны: $|g_n(y)|\le\|y\|\le \sup_K\|y\|<\infty$, а $|g_n(y)-g_n(z)|\le \|y-z\|$.
 
-    \item По теореме Арцела--Асколи выделяем подпоследовательность $g_{n_k}|_K$, сходящуюся в $C(K)$.
+    \item По Арцела--Асколи выделяем подпоследовательность $g_{n_k}|_K$, сходящуюся в $C(K)$.
 
     \item Тогда $\|\mathcal A^*g_{n_k}-\mathcal A^*g_{n_m}\|=\sup_{\|x\|\le1}|g_{n_k}(\mathcal A x)-g_{n_m}(\mathcal A x)|\le \|g_{n_k}|_K-g_{n_m}|_K\|_{C(K)}$, значит $\mathcal A^*g_{n_k}$ фундаментальна в $\mathcal X^*$, то есть $\mathcal A^*$ компактен.
 
     \item Обратно, пусть $\mathcal A^*$ компактен. По уже доказанному для $\mathcal A^*\in\mathcal L(\mathcal Y^*,\mathcal X^*)$ получаем, что $\mathcal A^{**}\in\mathcal L(\mathcal X^{**},\mathcal Y^{**})$ компактен.
 
-    \item Пусть $\Phi_{\mathcal X}:\mathcal X\to\mathcal X^{**}$ и $\Phi_{\mathcal Y}:\mathcal Y\to\mathcal Y^{**}$ --- канонические изометрии. Тогда для всех $x\in\mathcal X$ верно $\mathcal A^{**}\Phi_{\mathcal X}(x)=\Phi_{\mathcal Y}(\mathcal A x)$.
+    \item Пусть $\Phi_{\mathcal X}:\mathcal X\to\mathcal X^{**}$ и $\Phi_{\mathcal Y}:\mathcal Y\to\mathcal Y^{**}$ --- канонические вложения Банаха; они сохраняют норму. Тогда $A^{**}\Phi_X(x)=\Phi_Y(Ax)$: действительно, на любом $g\in Y^\ast$ обе стороны дают $\Phi_X(x)(A^\ast g)=g(Ax)$.
 
     \item Поэтому $\Phi_{\mathcal Y}(\mathcal A(\mathcal B_1[0]))=\mathcal A^{**}(\Phi_{\mathcal X}(\mathcal B_1[0]))$ вполне ограничено в $\mathcal Y^{**}$.
 
-    \item Так как $\Phi_X, \Phi_{\mathcal Y}$ --- изометрии, значит сохраняется вполне ограниченность. Значит $\mathcal A$ компактен.
+    \item Так как $\Phi_X,\Phi_{\mathcal Y}$ сохраняют норму, сохраняется и вполне ограниченность. Значит $\mathcal A$ компактен.
 \end{enumerate}
 
 \section*{22. Равенство размерностей ядер в гильбертовом случае}
@@ -323,43 +317,39 @@ $f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
 \end{enumerate}
 
 \section*{23. Критерий Фредгольма. Альтернатива Фредгольма}
-\textbf{Формулировка.} Пусть $X$ --- банахово пространство, $A\in\mathcal L(X)$ компактен, $\lambda\in\mathbb C\setminus\{0\}$, $A_\lambda=A-\lambda I$. \newline Тогда $\forall v\in X\quad (\exists u\in X:\ A_\lambda u=v)\Longleftrightarrow(\forall f\in\ker A_\lambda^*\quad f(v)=0)$. \newline Альтернатива Фредгольма: либо $\forall v\in X\ \exists!u\in X:\ A_\lambda u=v$, либо $\exists u_0\in X\setminus\{0\}:\ A_\lambda u_0=0$.
+\textbf{Формулировка.} Пусть $X$ --- банахово пространство, $A\in\mathcal L(X)$ компактен, $\lambda\in\mathbb C\setminus\{0\}$, $A_\lambda=A-\lambda I$. Тогда $\operatorname{Im}A_\lambda={}^{\perp}\ker A_\lambda^*$, то есть для $v\in X$ условие $\exists u:\ A_\lambda u=v$ равносильно $\forall f\in\ker A_\lambda^*\ f(v)=0$. \newline Альтернатива Фредгольма: либо $\forall v\in X\ \exists!u\in X:\ A_\lambda u=v$ (эквивалентно, $\ker A_\lambda=0$ и $\operatorname{Im}A_\lambda=X$), либо $\exists u_0\in X\setminus\{0\}:\ A_\lambda u_0=0$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item По билету 20 $\text{Im}\,A_\lambda$ замкнут, поэтому по аннуляторным соотношениям $\text{Im}\,A_\lambda={}^{\perp}\ker(A_\lambda)^*={}^{\perp}\ker A_\lambda^*$.
+    \item По билету 20 $\operatorname{Im}A_\lambda$ замкнут, поэтому по аннуляторным соотношениям $\operatorname{Im}A_\lambda={}^{\perp}\ker(A_\lambda)^*={}^{\perp}\ker A_\lambda^*$.
 
-    \item Поэтому $\exists u\in X:\ A_\lambda u=v$ тогда и только тогда, когда $v\in\text{Im}\,A_\lambda$, что равносильно $v\in{}^{\perp}\ker A_\lambda^*$.
+    \item Поэтому $\exists u\in X:\ A_\lambda u=v$ --- это буквально $v\in\operatorname{Im}A_\lambda$, а по предыдущему равенству это то же самое, что $v\in{}^{\perp}\ker A_\lambda^*$.
 
     \item Последнее означает ровно $\forall f\in\ker A_\lambda^*\quad f(v)=0$, что и даёт критерий Фредгольма.
 
-    \item Для альтернативы: если $\ker A_\lambda=0$, то по равенству размерностей ядер получаем $\ker A_\lambda^*=0$.
+    \item Для альтернативы: если $\ker A_\lambda=0$, то по равенству размерностей ядер получаем $\ker A_\lambda^*=0$, значит $\operatorname{Im}A_\lambda={}^{\perp}0=X$, то есть $\forall v\in X\ \exists!u\in X:\ A_\lambda u=v$.
 
-    \item Тогда $\text{Im}\,A_\lambda={}^{\perp}\ker A_\lambda^*={}^{\perp}0=X$, то есть $\forall v\in X\ \exists u\in X:\ A_\lambda u=v$.
-
-    \item Так как $\ker A_\lambda=0$, это решение единственно: $\forall v\in X\ \exists!u\in X:\ A_\lambda u=v$. Получаем первую ветвь альтернативы.
-
-    \item Если же $\ker A_\lambda\ne0$, то $\exists u_0\in X\setminus\{0\}:\ A_\lambda u_0=0$. Получаем вторую ветвь альтернативы.
+    \item Если же $\ker A_\lambda\ne0$, то $\exists u_0\in X\setminus\{0\}:\ A_\lambda u_0=0$. Это вторая ветвь альтернативы.
 \end{enumerate}
 
 \section*{24. Спектр компактного оператора}
-\textbf{Формулировка.} Пусть $X$ --- банахово пространство, $A\in\mathcal L(X)$ компактен. Тогда $\forall \lambda\in\sigma(A)\setminus\{0\}$ число $\lambda$ является собственным числом $A$, то есть $\ker A_\lambda\ne0$. Кроме того, $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно, поэтому $\sigma(A)$ не более чем счётен, если счётен, то $\lambda_k \rightarrow 0$, если $X$ бесконечномерно, то $0\in\sigma(A)$.
+\textbf{Формулировка.} Пусть $X$ --- банахово пространство, $A\in\mathcal L(X)$ компактен. Тогда всякое $\lambda\in\sigma(A)\setminus\{0\}$ является собственным числом: $\ker A_\lambda\ne0$. Кроме того, $\forall r>0$ множество $\Lambda_r=\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно; значит $\sigma(A)$ не более чем счётен, и если $\sigma(A)\setminus\{0\}=\{\lambda_k\}$ бесконечно, то $\lambda_k\to0$. Если $X$ бесконечномерно, то $0\in\sigma(A)$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Пусть $\lambda\ne0$ и $\lambda\in\sigma(A)$. Если $\ker A_\lambda=0$, то по альтернативе Фредгольма $\forall y\in X\ \exists!x\in X:\ A_\lambda x=y$, то есть $A_\lambda$ обратим, противоречие с $\lambda\in\sigma(A)$. Значит $\sigma(A) = \sigma_p(A)$.
+    \item Пусть $\lambda\ne0$ и $\lambda\in\sigma(A)$. Если $\ker A_\lambda=0$, то по альтернативе Фредгольма $\forall y\in X\ \exists!x\in X:\ A_\lambda x=y$, то есть $A_\lambda$ обратим, противоречие с $\lambda\in\sigma(A)$. Значит $\sigma(A)\setminus\{0\}\subset\sigma_p(A)$.
 
     \item Докажем, что $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно. Пусть нет: есть собственные числа $\{ \lambda_n \}$, $|\lambda_n|>r$.
 
     \item Берём собственные векторы $x_n\ne0$, $Ax_n=\lambda_n x_n$, $L_n=\Lin\{x_1,\ldots,x_n\}$. Собственные векторы, отвечающие различным собственным числам, линейно независимы, значит $L_1\subsetneq L_2\subsetneq\ldots$.
 
-    \item По лемме Рисса о почти перпендикуляре выбираем $y_n\in L_n$, $\|y_n\|=1$, так что $\rho(y_n,L_{n-1})>\frac12$.
+    \item По лемме Рисса о почти перпендикуляре: если $M\subsetneq L$ замкнуто, то в $L$ есть единичный вектор на расстоянии $>\frac12$ от $M$. Поэтому выбираем $y_n\in L_n$, $\|y_n\|=1$, так что $\rho(y_n,L_{n-1})>\frac12$.
 
     \item A - компактный. При $m<n$ имеем $Ay_m\in L_m\subset L_{n-1}$ и $Ay_n-\lambda_n y_n\in L_{n-1}$, поэтому $\|Ay_n-Ay_m\|\ge |\lambda_n|\rho(y_n,L_{n-1})>\frac r2$.
 
     \item Значит у последовательности $Ay_n$ нет фундаментальной подпоследовательности, что противоречит компактности $A$.
 
-    \item Следовательно, $\forall r>0$ множество $\{\lambda\in\sigma(A):|\lambda|>r\}$ конечно. Тогда $\sigma(A)\setminus\{0\}=\bigcup_{n=1}^{\infty}\{\lambda\in\sigma(A):|\lambda|>\frac1n\}$ не более чем счётно, и если множество $\{ \lambda_k\}$ счётно, то $\lambda_k \rightarrow 0, k \rightarrow \infty$.
+    \item Следовательно, каждое $\Lambda_r$ конечно. Тогда $\sigma(A)\setminus\{0\}=\bigcup_{n=1}^{\infty}\Lambda_{1/n}$ не более чем счётно; если $\sigma(A)\setminus\{0\}=\{\lambda_k\}$ бесконечно, то из конечности каждого $\Lambda_r$ следует $\lambda_k\to0$.
 
     \item Если $\dim X = \infty$, то $0\in\sigma(A)$, так как иначе $A^{-1}\in\mathcal L(X)$, и тогда $I=A^{-1}A$ компактен. Но компактность $I$ означает компактность единичного шара, что в бесконечномерном нормированном пространстве невозможно. Противоречие.
 \end{enumerate}
