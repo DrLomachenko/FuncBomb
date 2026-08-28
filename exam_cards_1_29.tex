@@ -37,6 +37,44 @@
 % \small
 \sloppy
 
+\section*{0. Важное из первого семестра}
+
+\textbf{Формулировка Хана--Банаха, комплексный случай.}
+Пусть $\X$ --- комплексное линейное пространство, $L\subset \X$ --- комплексное линейное подпространство, а $p:\X\to\R$ --- полуаддитивный абсолютно однородный функционал:
+\[
+    p(x+y)\le p(x)+p(y),\qquad p(\lambda x)=|\lambda|p(x)
+    \quad (x,y\in\X,\ \lambda\in\CC).
+\]
+Пусть $\varphi:L\to\CC$ --- комплексно-линейный функционал и
+\[
+    |\varphi(x)|\le p(x)\qquad (x\in L).
+\]
+Тогда существует комплексно-линейный функционал $\psi:\X\to\CC$ такой, что
+\[
+    \psi|_L=\varphi,\qquad |\psi(x)|\le p(x)\quad (x\in\X).
+\]
+В частности, если $\X$ --- комплексное нормированное пространство, $L\subset\X$ --- подпространство и $\varphi\in L^\ast$, то существует $\psi\in\X^\ast$ такая, что $\psi|_L=\varphi$ и $\|\psi\|=\|\varphi\|$.
+
+\textbf{Формулировка Банаха--Штейнгауза, комплексный случай.}
+Пусть $\X$ --- комплексное банахово пространство, $Y$ --- комплексное нормированное пространство и $\{A_n\}\subset\mathcal L(\X,Y)$ --- последовательность непрерывных комплексно-линейных операторов. Если $\{A_n\}$ ограничена поточечно, то есть
+\[
+    \forall x\in\X\ \exists C(x)>0\ \forall n\in\mathbb N
+    \qquad \|A_nx\|\le C(x),
+\]
+то последовательность норм операторов ограничена:
+\[
+    \sup_{n\in\mathbb N}\|A_n\|<+\infty.
+\]
+
+\textbf{Лемма об аннуляторе замкнутого подпространства.}
+Если $Y$ --- нормированное пространство, $M\subset Y$ --- замкнутое подпространство, то
+\[
+    M=Y \Longleftrightarrow M^\perp=\{0\}.
+\]
+Эквивалентно: если $y_0\notin M$, то существует $F\in Y^\ast$ такой, что $F|_M=0$, но $F(y_0)\ne0$.
+\textbf{Доказательство.}
+Если $M=Y$, то очевидно $M^\perp=\{0\}$. Обратно, пусть $y_0\notin M$, $d=\rho(y_0,M)>0$. На $M\oplus\Lin\{y_0\}$ задаём $F_0(m+\alpha y_0)=\alpha$; так как $\|m+\alpha y_0\|\ge|\alpha|d$, имеем $F_0\in(M\oplus\Lin\{y_0\})^\ast$. По Хану--Банаху продолжаем $F_0$ до $F\in Y^\ast$: тогда $F|_M=0$, $F(y_0)=1$.
+
 \section*{1. Слабая-* топология. Слабо-* непрерывные функционалы}
 
 \textbf{Формулировки.}
@@ -250,12 +288,10 @@ $f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Если $x\in\overline L^{\|\cdot\|}$ или $x\in\overline L^w$, то для любого $f\in L^\perp$ имеем $f|_L=0$, а значит по непрерывности $f(x)=0$. Поэтому $\overline L^{\|\cdot\|}\subset{}^\perp(L^\perp)$ и $\overline L^w\subset{}^\perp(L^\perp)$.
-    \item Обратно, если $x\notin\overline L^{\|\cdot\|}$, то смотрим на фактор $\X/\overline L^{\|\cdot\|}$: это пространство классов $u+\overline L^{\|\cdot\|}$, и класс $x+\overline L^{\|\cdot\|}$ там ненулевой. По Хану--Банаху на этом факторе есть функционал $\psi$, который равен $0$ на нуле, но $\psi(x+\overline L^{\|\cdot\|})\ne0$.
-    \item Поднимаем его на $\X$: $f(u)=\psi(u+\overline L^{\|\cdot\|})$. Тогда $f\in\X^\ast$, $f|_{\overline L^{\|\cdot\|}}=0$, но $f(x)\ne0$. Значит $f\in L^\perp$, и потому $x\notin{}^\perp(L^\perp)$. Следовательно, ${}^\perp(L^\perp)\subset\overline L^{\|\cdot\|}$.
-    \item Теперь $\overline L^{\|\cdot\|}$ выпукло и нормозамкнуто, значит по Мазуру его слабое замыкание совпадает с ним; отсюда $\overline L^w=\overline L^{\|\cdot\|}$ и вместе с первым шагом получаем нужное равенство.
-    \item Второе: работаем в слабой-* локально выпуклой топологии на $\X^\ast$; если $f\notin\overline N^{w^\ast}$, отделяем его слабo-* непрерывным функционалом, а такие имеют вид $J_x$.
-    \item Тогда $J_x$ зануляет $N$, то есть $x\in{}^\perp N$, но не зануляет $f$ --- противоречие принадлежности $f\in({}^\perp N)^\perp$.
+    \item Так как $w\subset\|\cdot\|$, имеем $\overline L^{\|\cdot\|}\subset\overline L^w$; с другой стороны, $\overline L^{\|\cdot\|}$ выпукло и нормозамкнуто, значит по Мазуру слабо замкнуто. Поэтому $\overline L^{\|\cdot\|}=\overline L^w$. Также очевидно $\overline L^{\|\cdot\|}\subset{}^\perp(L^\perp)$ по непрерывности $f\in L^\perp$.
+    \item Докажем ${}^\perp(L^\perp)\subset\overline L^{\|\cdot\|}$. Пусть $x\notin M:=\overline L^{\|\cdot\|}$. В факторе $\X/M$ берём $[u]=u+M$, $\|[u]\|=\inf_{m\in M}\|u-m\|$; так как $M$ замкнуто, это норма, и $[x]\ne0$.
+    \item На $\Lin\{[x]\}$ задаём $\psi_0(\alpha[x])=\alpha\|[x]\|$; по Хану--Банаху $\psi_0$ продолжается до $\psi\in(\X/M)^\ast$, $\psi([x])\ne0$. Для $\pi:\X\to\X/M$ имеем $\|\pi u\|\le\|u\|$, поэтому $f=\psi\circ\pi\in\X^\ast$, $f|_L=0$, но $f(x)\ne0$. Значит $x\notin{}^\perp(L^\perp)$.
+    \item Второе: $\overline N^{w^\ast}\subset({}^\perp N)^\perp$ очевидно. Обратно, пусть $f\notin\overline N^{w^\ast}$. Тогда для некоторых $x_1,\ldots,x_n\in\X$ образ $T(f)$ не лежит в $T(N)$, где $T(g)=(g(x_1),\ldots,g(x_n))$. В конечномерном $\CC^n$ отделяем $T(f)$ от подпространства $T(N)$ функционалом $\Lambda(z)=\sum a_kz_k$. Тогда $x=\sum a_kx_k\in{}^\perp N$, но $f(x)=\Lambda(T(f))\ne0$, противоречие.
     \item Голдстайн: $\overline{J_\X\X}^{w^\ast}=({}^\perp J_\X\X)^\perp$, а ${}^\perp J_\X\X=\{0\}\subset\X^\ast$, значит замыкание равно $\X^{\ast\ast}$.
 \end{enumerate}
 
@@ -264,7 +300,7 @@ $f_n\overset{*}{\rightharpoonup}f \iff \forall x\in X\;\; f_n(x)\to f(x)$.
 
 \textbf{Доказательство, идея.}
 \begin{enumerate}
-    \item Если $\X^\ast$ рефлексивно, доказываем $J_\X\X=\X^{\ast\ast}$ через аннулятор: достаточно $J_\X(\X)^\perp=\{0\}$ в $\X^{\ast\ast\ast}$.
+    \item Если $\X^\ast$ рефлексивно, то $J_\X\X$ замкнуто в $\X^{\ast\ast}$, поэтому по лемме из п.~0 достаточно доказать $J_\X(\X)^\perp=\{0\}$ в $\X^{\ast\ast\ast}$.
     \item Любой $\Phi\in\X^{\ast\ast\ast}$ имеет вид $J_{\X^\ast}f$; если он зануляет все $J_\X x$, то $f(x)=0$ для всех $x$, значит $f=0$.
     \item Если $\X$ рефлексивно, то для $\Phi\in\X^{\ast\ast\ast}$ берём $f=J_\X^\ast\Phi$ и проверяем $J_{\X^\ast}f=\Phi$ на $J_\X\X=\X^{\ast\ast}$.
 \end{enumerate}
