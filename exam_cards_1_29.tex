@@ -68,6 +68,15 @@
 	\sup_{n\in\mathbb N}\|A_n\|<+\infty.
 	\]
 
+	\textbf{Лемма об аннуляторе замкнутого подпространства.}
+	Если $Y$ --- нормированное пространство, $M\subset Y$ --- замкнутое подпространство, то
+	\[
+	M=Y \Longleftrightarrow M^\perp=\{0\}.
+	\]
+	Эквивалентно: если $y_0\notin M$, то существует $F\in Y^\ast$ такой, что $F|_M=0$, но $F(y_0)\ne0$.
+	\textbf{Доказательство.}
+	Если $M=Y$, то очевидно $M^\perp=\{0\}$. Обратно, пусть $y_0\notin M$, $d=\rho(y_0,M)>0$. На $M\oplus\Lin\{y_0\}$ задаём $F_0(m+\alpha y_0)=\alpha$; так как $\|m+\alpha y_0\|\ge|\alpha|d$, имеем $F_0\in(M\oplus\Lin\{y_0\})^\ast$. По Хану--Банаху продолжаем $F_0$ до $F\in Y^\ast$: тогда $F|_M=0$, $F(y_0)=1$.
+
 	\section*{1. Слабая-* топология. Слабо-* непрерывные функционалы}
 
 	\textbf{Формулировки.}
@@ -302,10 +311,6 @@
 
 	\textbf{Доказательство, идея.}
 	\begin{enumerate}
-		\item Так как $w\subset\|\cdot\|$, имеем $\overline L^{\|\cdot\|}\subset\overline L^w$; с другой стороны, $\overline L^{\|\cdot\|}$ выпукло и нормозамкнуто, значит по Мазуру слабо замкнуто. Поэтому $\overline L^{\|\cdot\|}=\overline L^w$. Также очевидно $\overline L^{\|\cdot\|}\subset{}^\perp(L^\perp)$ по непрерывности $f\in L^\perp$.
-		\item Докажем ${}^\perp(L^\perp)\subset\overline L^{\|\cdot\|}$. Пусть $x\notin M:=\overline L^{\|\cdot\|}$. В факторе $\X/M$ берём $[u]=u+M$, $\|[u]\|=\inf_{m\in M}\|u-m\|$; так как $M$ замкнуто, это норма, и $[x]\ne0$.
-    \item На $\Lin\{[x]\}$ задаём $\psi_0(\alpha[x])=\alpha\|[x]\|$; по Хану--Банаху $\psi_0$ продолжается до $\psi\in(\X/M)^\ast$, $\psi([x])\ne0$. Для $\pi:\X\to\X/M$ имеем $\|\pi u\|\le\|u\|$, поэтому $f=\psi\circ\pi\in\X^\ast$, $f|_L=0$, но $f(x)\ne0$. Значит $x\notin{}^\perp(L^\perp)$.
-		\item Второе: $\overline N^{w^\ast}\subset({}^\perp N)^\perp$ очевидно. Обратно, пусть $f\notin\overline N^{w^\ast}$. Тогда для некоторых $x_1,\ldots,x_n\in\X$ образ $T(f)$ не лежит в $T(N)$, где $T(g)=(g(x_1),\ldots,g(x_n))$. В конечномерном $\CC^n$ отделяем $T(f)$ от подпространства $T(N)$ функционалом $\Lambda(z)=\sum a_kz_k$. Тогда $x=\sum a_kx_k\in{}^\perp N$, но $f(x)=\Lambda(T(f))\ne0$, противоречие.
 		\item Так как $w\subset\|\cdot\|$, имеем $\overline L^{\|\cdot\|}\subset\overline L^w$; с другой стороны, $\overline L^{\|\cdot\|}$ выпукло и нормозамкнуто, значит по Мазуру слабо замкнуто. Поэтому $\overline L^{\|\cdot\|}=\overline L^w$. Также очевидно $\overline L^{\|\cdot\|}\subset{}^\perp(L^\perp)$ по непрерывности $f\in L^\perp$.
 		\item Докажем ${}^\perp(L^\perp)\subset\overline L^{\|\cdot\|}$. Пусть $x\notin M:=\overline L^{\|\cdot\|}$. В факторе $\X/M$ берём $[u]=u+M$, $\|[u]\|=\inf_{m\in M}\|u-m\|$; так как $M$ замкнуто, это норма, и $[x]\ne0$.
 		\item На $\Lin\{[x]\}$ задаём $\psi_0(\alpha[x])=\alpha\|[x]\|$; по Хану--Банаху $\psi_0$ продолжается до $\psi\in(\X/M)^\ast$, $\psi([x])\ne0$. Для $\pi:\X\to\X/M$ имеем $\|\pi u\|\le\|u\|$, поэтому $f=\psi\circ\pi\in\X^\ast$, $f|_L=0$, но $f(x)\ne0$. Значит $x\notin{}^\perp(L^\perp)$.
